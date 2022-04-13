@@ -45,7 +45,7 @@ class WebScraper:
     
     def save_results(self):
         """
-        saves the results in a json file
+        saves the results in a text file
         """
         
         self.get_citations_needed_report()
