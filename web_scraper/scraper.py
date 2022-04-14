@@ -20,8 +20,19 @@ class WebScraper:
         res = requests.get(self.url)
         soup = BeautifulSoup(res.content, 'html.parser')
         paragraphs = soup.find_all('p')
-        self.citation_needed = [p for p in paragraphs if not p.find('sup', class_="reference")]
         
+        self.citation_needed = []
+        
+        for p in paragraphs:
+            super_scripted = p.find_all('sup')    
+            for sup in super_scripted:
+                if sup:
+                    list_item = sup.find('i')
+                    if list_item:
+                        anchor = list_item.find('a')
+                        self.citation_needed.append(p)
+                
+
         return len(self.citation_needed)
 
         
@@ -58,5 +69,5 @@ class WebScraper:
     
     
 ws = WebScraper("https://en.wikipedia.org/wiki/History_of_Mexico")
-ws.save_results()
+ws.get_citations_needed_report()
     
