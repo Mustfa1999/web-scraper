@@ -31,7 +31,7 @@ class WebScraper:
                     if list_item:
                         anchor = list_item.find('a')
                         self.citation_needed.append(p)
-                
+
 
         return len(self.citation_needed)
 
@@ -69,5 +69,5 @@ class WebScraper:
     
     
 ws = WebScraper("https://en.wikipedia.org/wiki/History_of_Mexico")
-ws.get_citations_needed_report()
+ws.save_results()
     
