@@ -60,7 +60,7 @@ class WebScraper:
         counter = 1
 
         for text in self.citation_needed:
-            self.report[f"Paragraph {counter}: "] = f"{str(text)}\n"
+            self.report[f"Paragraph {counter}: "] = f"{str(text)[3:]}\n"
             counter += 1
             
         return self.report

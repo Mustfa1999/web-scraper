@@ -6,9 +6,10 @@ def test_get_citations_needed_count(ws):
     assert ws.get_citations_needed_count() == 5
     
 
-def test_get_citations_needed_report():
-    with open('citations_needed_report.txt', 'r') as f:
-        assert "".join(f.readlines()).count("<p>") == 5
+def test_get_citations_needed_report(ws):
+    ws.get_citations_needed_count()
+    for p in ws.citation_needed:
+        assert p.count("<p>") == 1
 
 
 @pytest.fixture
